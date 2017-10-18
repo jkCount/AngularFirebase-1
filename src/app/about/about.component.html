@@ -1,0 +1,41 @@
+<div class = "container">
+  about works!
+</div>
+<div class="bs-docs-section">
+  <div class="row">
+      <div class="col-lg-2"></div>
+    <div class="col-lg-8">
+      <div class="page-header">
+        <div class="text-center">
+          <h1>Here is the Product details!</h1>
+          <h3>{{prod?.length}}</h3>
+        </div>
+      </div>
+       
+<div class="bs-component">
+<table class="table table-striped table-hover ">
+<thead>
+<tr>
+<th>SKU</th>
+<th>Category</th>
+<th>Image</th>
+<th>Product-ID</th>
+<th>Product-Name</th>
+</tr>
+</thead>
+<tbody>
+<tr *ngFor = "let y of prod">
+    <td>{{y.varietyList[0].sku}}</td>
+<td>{{y.productInfo.category}}</td>
+<td>{{y.productInfo.image}}</td>
+<td>{{y.productInfo.productId}}</td>
+<td>{{y.productInfo.productName}}</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="col-lg-2"></div>
+</div>
+</div>
+

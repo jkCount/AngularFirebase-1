@@ -7,8 +7,69 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="./assets/bootstrap.css">
+  <!-- <link rel="stylesheet" href="./assets/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="./assets/style.css">
+
 </head>
-<body>
-  <app-root></app-root>
-</body>
+  <body>
+      <app-root></app-root>
+    <script src="https://www.gstatic.com/firebasejs/4.5.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+      var config = 
+      {
+        apiKey: "AIzaSyDBNtB8I3PDhGhSWX9jyr3YzPX9Kf2hNjU",
+        authDomain: "project-25092017.firebaseapp.com",
+        databaseURL: "https://project-25092017.firebaseio.com",
+        projectId: "project-25092017",
+        storageBucket: "project-25092017.appspot.com",
+        messagingSenderId: "811496384531"
+      };
+      firebase.initializeApp(config);
+        function EmpData(dob,email,mob,name)
+      {
+        this.dob = dob;
+        this.email = email;
+        this.mob = mob;
+        this.name = name;
+      }
+    </script>
+    <script>
+      function save ()
+      {
+        var mob = document.getElementById("tel").value;
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var dob = document.getElementById('dt').value;
+        //var EmpData = new EmpData(dob, email, mob, name);
+        // window.alert(dob + email + mob + name);
+        var empDetails = firebase.database().ref('EmpDetails/');
+        empDetails.push().set({
+          DOB: dob, 
+          Email: email, 
+          Mobile: mob, 
+          Name: name
+        })
+        //empDetails.push().set(EmpData);
+      }
+      function fetch()
+      {
+        var  empDetails = firebase.database().ref('EmpDetails/');
+        var arr = [];
+        empDetails.once('value').then(function(snap){
+          console.log('Hello World');
+          console.log(snap.key);
+          snap.forEach(function(csnap){
+            console.log(csnap.key);
+            arr.push(csnap.key);
+            console.log(csnap.val());
+            arr.push(csnap.val());
+          });
+        
+          document.getElementById("data").innerHTML = arr;
+        });
+      }
+    </script>
+  </body>
 </html>

@@ -1,0 +1,19 @@
+ul li {
+    text-decoration: none;
+    display: block;
+    list-style-type: none;
+}
+.myheader{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 12px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background: grey;
+    opacity: 1;
+    display: block;
+    
+}
+img{
+    margin-top: 4px;
+}
